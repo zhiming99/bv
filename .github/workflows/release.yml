@@ -90,124 +90,11 @@ jobs:
 
       # upload to app center
 
-      - name: Upload lite release apk to app center
-        uses: wzieba/AppCenter-Github-Action@v1.3.3
-        with:
-          appName: aaa1115910-gmail.com/BV
-          token: ${{secrets.APP_CENTER_TOKEN}}
-          group: Public
-          file: app/build/outputs/apk/lite/release/${{ env.lite_release_info_apk_filename }}
-          notifyTesters: true
-          debug: false
-
-      - name: Upload default release apk to app center (universal)
-        uses: wzieba/AppCenter-Github-Action@v1.3.3
-        with:
-          appName: aaa1115910-gmail.com/BV
-          token: ${{secrets.APP_CENTER_TOKEN}}
-          group: Public-universal
-          file: app/build/outputs/apk/default/release/BV_${{ env.default_release_info_version_code }}_${{ env.default_release_info_version_name }}_default_universal.apk
-          notifyTesters: true
-          debug: false
-          gitReleaseNotes: true
-
-      - name: Upload default release apk to app center (armeabi-v7a)
-        uses: wzieba/AppCenter-Github-Action@v1.3.3
-        with:
-          appName: aaa1115910-gmail.com/BV
-          token: ${{secrets.APP_CENTER_TOKEN}}
-          group: Public-armeabi-v7a
-          file: app/build/outputs/apk/default/release/BV_${{ env.default_release_info_version_code }}_${{ env.default_release_info_version_name }}_default_armeabi-v7a.apk
-          notifyTesters: true
-          debug: false
-          gitReleaseNotes: true
-
-      - name: Upload default release apk to app center (arm64-v8a)
-        uses: wzieba/AppCenter-Github-Action@v1.3.3
-        with:
-          appName: aaa1115910-gmail.com/BV
-          token: ${{secrets.APP_CENTER_TOKEN}}
-          group: Public-arm64-v8a
-          file: app/build/outputs/apk/default/release/BV_${{ env.default_release_info_version_code }}_${{ env.default_release_info_version_name }}_default_arm64-v8a.apk
-          notifyTesters: true
-          debug: false
-          gitReleaseNotes: true
-
-      - name: Upload default release apk to app center (x86)
-        uses: wzieba/AppCenter-Github-Action@v1.3.3
-        with:
-          appName: aaa1115910-gmail.com/BV
-          token: ${{secrets.APP_CENTER_TOKEN}}
-          group: Public-x86
-          file: app/build/outputs/apk/default/release/BV_${{ env.default_release_info_version_code }}_${{ env.default_release_info_version_name }}_default_x86.apk
-          notifyTesters: true
-          debug: false
-          gitReleaseNotes: true
-
-      - name: Upload default release apk to app center (x86_64)
-        uses: wzieba/AppCenter-Github-Action@v1.3.3
-        with:
-          appName: aaa1115910-gmail.com/BV
-          token: ${{secrets.APP_CENTER_TOKEN}}
-          group: Public-x86_64
-          file: app/build/outputs/apk/default/release/BV_${{ env.default_release_info_version_code }}_${{ env.default_release_info_version_name }}_default_x86_64.apk
-          notifyTesters: true
-          debug: false
-          gitReleaseNotes: true
-
       # upload artifacts lite-debug
-
-      - name: Archive lite debug build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: Lite debug build artifact
-          path: app/build/outputs/apk/lite/debug/${{ env.lite_debug_info_apk_filename }}
 
       # upload artifacts lite-release
 
-      - name: Archive lite release build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: Lite release build artifact
-          path: app/build/outputs/apk/lite/release/${{ env.lite_release_info_apk_filename }}
-
-      - name: Archive lite alpha build mappings
-        uses: actions/upload-artifact@v3
-        with:
-          name: Lite release build mappings
-          path: app/build/outputs/mapping/liteRelease
-
       # upload artifacts default-debug
-
-      - name: Archive default debug build artifacts (universal)
-        uses: actions/upload-artifact@v3
-        with:
-          name: Default debug build artifact (universal)
-          path: app/build/outputs/apk/default/debug/BV_${{ env.default_debug_info_version_code }}_${{ env.default_debug_info_version_name }}_default_universal.apk
-
-      - name: Archive default debug build artifacts (armeabi-v7a)
-        uses: actions/upload-artifact@v3
-        with:
-          name: Default debug build artifact (armeabi-v7a)
-          path: app/build/outputs/apk/default/debug/BV_${{ env.default_debug_info_version_code }}_${{ env.default_debug_info_version_name }}_default_armeabi-v7a.apk
-
-      - name: Archive default debug build artifacts (arm64-v8a)
-        uses: actions/upload-artifact@v3
-        with:
-          name: Default debug build artifact (arm64-v8a)
-          path: app/build/outputs/apk/default/debug/BV_${{ env.default_debug_info_version_code }}_${{ env.default_debug_info_version_name }}_default_arm64-v8a.apk
-
-      - name: Archive default debug build artifacts (x86)
-        uses: actions/upload-artifact@v3
-        with:
-          name: Default debug build artifact (x86)
-          path: app/build/outputs/apk/default/debug/BV_${{ env.default_debug_info_version_code }}_${{ env.default_debug_info_version_name }}_default_x86.apk
-
-      - name: Archive default debug build artifacts (x86_64)
-        uses: actions/upload-artifact@v3
-        with:
-          name: Default debug build artifact (x86_64)
-          path: app/build/outputs/apk/default/debug/BV_${{ env.default_debug_info_version_code }}_${{ env.default_debug_info_version_name }}_default_x86_64.apk
 
       # upload artifacts default-release
 
@@ -234,15 +121,3 @@ jobs:
         with:
           name: Default release build artifact (arm64-v8a)
           path: app/build/outputs/apk/default/release/BV_${{ env.default_release_info_version_code }}_${{ env.default_release_info_version_name }}_default_arm64-v8a.apk
-
-      - name: Archive default release build artifacts (x86)
-        uses: actions/upload-artifact@v3
-        with:
-          name: Default release build artifact (x86)
-          path: app/build/outputs/apk/default/release/BV_${{ env.default_release_info_version_code }}_${{ env.default_release_info_version_name }}_default_x86.apk
-
-      - name: Archive default release build artifacts (x86_64)
-        uses: actions/upload-artifact@v3
-        with:
-          name: Default release build artifact (x86_64)
-          path: app/build/outputs/apk/default/release/BV_${{ env.default_release_info_version_code }}_${{ env.default_release_info_version_name }}_default_x86_64.apk
